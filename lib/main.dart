@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Calcule seu IMC'),
     );
   }
 }
@@ -31,10 +31,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double _imc = 0;
+  double imc = 0;
   final _alturaController = TextEditingController();
   final _pesoController = TextEditingController();
-  late String textodiagnosticoIMC;
+  String textodiagnosticoIMC = 'Sem diagnostico';
 
   @override
   void initState() {
@@ -57,16 +57,28 @@ class _MyHomePageState extends State<MyHomePage> {
       print('altura: $altura');
 
       if (peso != 0 && altura != 0) {
-        _imc = peso / ((altura / 100) * (altura / 100));
+        imc = peso / ((altura) * (altura));
       } else {
-        _imc = 0;
+        imc = 0;
       }
 
       _diagnosticoIMC();
     });
   }
 
-  void _diagnosticoIMC() {}
+  void _diagnosticoIMC() {
+    if (imc < 18.5) {
+      textodiagnosticoIMC = 'Magreza';
+    } else if (imc >= 18.5 && imc <= 24.9) {
+      textodiagnosticoIMC = 'Normal';
+    } else if (imc >= 25.0 && imc <= 29.9) {
+      textodiagnosticoIMC = 'Sobrepeso';
+    } else if (imc >= 30 && imc <= 39.9) {
+      textodiagnosticoIMC = 'Obesidade';
+    } else if (imc >= 40) {
+      textodiagnosticoIMC = 'Obesidade Grave';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     obscureText: false,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Áltura em centimetros(cm)',
+                      labelText: 'Áltura em metros(m)',
                     ),
                     /* onEditingComplete: () {
                       _altura = int.parse(_alturaController.text);
@@ -134,15 +146,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 Flexible(
                   fit: FlexFit.loose,
                   child: Text(
-                    _imc.toStringAsFixed(2),
+                    imc.toStringAsFixed(2),
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(),
+                Text(
+                  textodiagnosticoIMC,
+                  style: const TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             Container(
