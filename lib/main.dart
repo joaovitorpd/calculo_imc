@@ -100,7 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.all(5),
                   child: TextField(
                     controller: _pesoController,
-                    keyboardType: TextInputType.number,
+                    keyboardType:
+                        const TextInputType.numberWithOptions(decimal: true),
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Peso em Kg',
