@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      locale: const Locale('pt', 'BR'),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -100,7 +101,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: TextField(
                     controller: _pesoController,
                     keyboardType: TextInputType.number,
-                    obscureText: false,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Peso em Kg',
@@ -118,8 +118,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.all(5),
                   child: TextField(
                     controller: _alturaController,
-                    keyboardType: TextInputType.number,
-                    obscureText: false,
+                    keyboardType:
+                        const TextInputType.numberWithOptions(decimal: true),
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Áltura em metros(m)',
