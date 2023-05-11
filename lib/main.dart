@@ -1,4 +1,6 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -99,38 +101,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 200,
                   height: 50,
                   padding: const EdgeInsets.all(5),
-                  child: TextField(
+                  child: EntradaFormatada(
+                    label: 'Peso',
                     controller: _pesoController,
-                    keyboardType:
-                        const TextInputType.numberWithOptions(decimal: true),
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Peso em Kg',
-                    ),
-                    /* onEditingComplete: () {
-                      _peso = int.parse(_pesoController.text);
-                      print(_peso);
-                    }, */
-                    //onChanged: (value) => _peso = int.parse(value),
+                    formatter: PesoInputFormatter(),
                   ),
                 ),
                 Container(
                   width: 200,
                   height: 50,
                   padding: const EdgeInsets.all(5),
-                  child: TextField(
+                  child: EntradaFormatada(
+                    label: 'Altura',
                     controller: _alturaController,
-                    keyboardType:
-                        const TextInputType.numberWithOptions(decimal: true),
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Áltura em metros(m)',
-                    ),
-                    /* onEditingComplete: () {
-                      _altura = int.parse(_alturaController.text);
-                      print(_altura);
-                    }, */
-                    //onChanged: (value) => _altura = int.parse(value),
+                    formatter: AlturaInputFormatter(),
                   ),
                 ),
               ],
@@ -179,6 +163,34 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class EntradaFormatada extends StatelessWidget {
+  final String label;
+  final TextEditingController controller;
+  final TextInputFormatter formatter;
+
+  const EntradaFormatada(
+      {super.key,
+      required this.label,
+      required this.controller,
+      required this.formatter});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        border: const OutlineInputBorder(),
+      ),
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+        formatter,
+      ],
+      keyboardType: const TextInputType.numberWithOptions(decimal: true),
     );
   }
 }
