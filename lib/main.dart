@@ -107,6 +107,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     formatter: PesoInputFormatter(),
                   ),
                 ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 Container(
                   width: 200,
                   height: 50,
