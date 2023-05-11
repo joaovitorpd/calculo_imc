@@ -50,7 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _calcularIMC() {
-    double altura = double.parse(_alturaController.text.replaceFirst(r',', ''));
+    double altura =
+        double.parse(_alturaController.text.replaceFirst(r',', '.'));
     double peso = double.parse(_pesoController.text.replaceFirst(',', '.'));
 
     setState(() {
