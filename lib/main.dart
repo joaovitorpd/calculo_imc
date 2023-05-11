@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 50,
                   padding: const EdgeInsets.all(5),
                   child: EntradaFormatada(
-                    label: 'Peso',
+                    label: 'Peso (Kg)',
                     controller: _pesoController,
                     formatter: PesoInputFormatter(),
                   ),
@@ -112,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 50,
                   padding: const EdgeInsets.all(5),
                   child: EntradaFormatada(
-                    label: 'Altura',
+                    label: 'Altura (metros)',
                     controller: _alturaController,
                     formatter: AlturaInputFormatter(),
                   ),
@@ -122,18 +122,28 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Flexible(
+                const Flexible(
                   fit: FlexFit.loose,
+                  // ignore: prefer_const_constructors
                   child: Text(
                     'IMC: ',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25.0,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
                 Flexible(
                   fit: FlexFit.loose,
                   child: Text(
                     imc.toStringAsFixed(2),
-                    style: Theme.of(context).textTheme.headlineSmall,
+                    // ignore: prefer_const_constructors
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25.0,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ],
