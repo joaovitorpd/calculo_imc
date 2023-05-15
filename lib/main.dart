@@ -124,34 +124,45 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Flexible(
-                  fit: FlexFit.loose,
-                  // ignore: prefer_const_constructors
-                  child: Text(
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              width: 190,
+              height: 40,
+              padding: const EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3.0),
+                border: Border.all(
+                  width: 1,
+                  color: Colors.grey,
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
                     'IMC: ',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
+                      fontSize: 18.0,
                       color: Colors.grey,
                     ),
                   ),
-                ),
-                Flexible(
-                  fit: FlexFit.loose,
-                  child: Text(
+                  Text(
                     imc.toStringAsFixed(2),
                     // ignore: prefer_const_constructors
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
+                      fontSize: 18.0,
                       color: Colors.grey,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -166,7 +177,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 5,
+            ),
             Container(
+              width: 200,
+              height: 50,
               padding: const EdgeInsets.all(5),
               child: ElevatedButton(
                 child: const Text('Calcular IMC'),
