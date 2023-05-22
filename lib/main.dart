@@ -93,108 +93,110 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 200,
-                    height: 50,
-                    padding: const EdgeInsets.all(5),
-                    child: EntradaFormatada(
-                      label: 'Peso (Kg)',
-                      controller: _pesoController,
-                      formatter: PesoInputFormatter(),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 200,
-                    height: 50,
-                    padding: const EdgeInsets.all(5),
-                    child: EntradaFormatada(
-                      label: 'Altura (metros)',
-                      controller: _alturaController,
-                      formatter: AlturaInputFormatter(),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Container(
-                width: 190,
-                height: 40,
-                padding: const EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3.0),
-                  border: Border.all(
-                    width: 1,
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Row(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'IMC: ',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    Text(
-                      imc.toStringAsFixed(2),
-                      // ignore: prefer_const_constructors
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                        color: Colors.grey,
+                    Container(
+                      width: 200,
+                      height: 50,
+                      padding: const EdgeInsets.all(5),
+                      child: EntradaFormatada(
+                        label: 'Peso (Kg)',
+                        controller: _pesoController,
+                        formatter: PesoInputFormatter(),
                       ),
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    textodiagnosticoIMC,
-                    style: const TextStyle(
-                      color: Colors.blueGrey,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 200,
+                      height: 50,
+                      padding: const EdgeInsets.all(5),
+                      child: EntradaFormatada(
+                        label: 'Altura (metros)',
+                        controller: _alturaController,
+                        formatter: AlturaInputFormatter(),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  width: 190,
+                  height: 40,
+                  padding: const EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(3.0),
+                    border: Border.all(
+                      width: 1,
+                      color: Colors.grey,
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Container(
-                width: 200,
-                height: 50,
-                padding: const EdgeInsets.all(5),
-                child: ElevatedButton(
-                  child: const Text('Calcular IMC'),
-                  onPressed: () {
-                    _calcularIMC();
-                    FocusManager.instance.primaryFocus?.unfocus();
-                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'IMC: ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      Text(
+                        imc.toStringAsFixed(2),
+                        // ignore: prefer_const_constructors
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      textodiagnosticoIMC,
+                      style: const TextStyle(
+                        color: Colors.blueGrey,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  width: 200,
+                  height: 50,
+                  padding: const EdgeInsets.all(5),
+                  child: ElevatedButton(
+                    child: const Text('Calcular IMC'),
+                    onPressed: () {
+                      _calcularIMC();
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
