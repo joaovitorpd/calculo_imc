@@ -267,7 +267,7 @@ Future<void> _janelaDeAjuda(BuildContext context) {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              "Depois, insira sua altura medida em metros, no formato #,## (com duas casas decimais).",
+              "Depois, insira sua altura medida em metros (m), no formato #,## (com duas casas decimais).",
               textAlign: TextAlign.justify,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
