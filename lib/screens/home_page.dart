@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  void _calcularIMC() {
+  void calcularIMC() {
     double altura =
         double.parse(_alturaController.text.replaceFirst(r',', '.'));
     double peso = double.parse(_pesoController.text.replaceFirst(',', '.'));
@@ -45,11 +45,11 @@ class _HomePageState extends State<HomePage> {
         imc = 0;
       }
 
-      _diagnosticoIMC();
+      diagnosticoIMC();
     });
   }
 
-  void _diagnosticoIMC() {
+  void diagnosticoIMC() {
     if (imc < 18.5) {
       textodiagnosticoIMC = 'Magreza';
     } else if (imc >= 18.5 && imc <= 24.9) {
@@ -180,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                   child: ElevatedButton(
                     child: const Text('Calcular IMC'),
                     onPressed: () {
-                      _calcularIMC();
+                      calcularIMC();
                       FocusManager.instance.primaryFocus?.unfocus();
                     },
                   ),
