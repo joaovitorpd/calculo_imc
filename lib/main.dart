@@ -1,14 +1,15 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:calculo_imc/janela_de_ajuda.dart';
+import 'package:calculo_imc/widgets/entrada_formatada.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const AppCalculoIMC());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AppCalculoIMC extends StatelessWidget {
+  const AppCalculoIMC({super.key});
 
   // This widget is the root of your application.
   @override
@@ -212,34 +213,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class EntradaFormatada extends StatelessWidget {
-  final String label;
-  final TextEditingController controller;
-  final TextInputFormatter formatter;
-
-  const EntradaFormatada(
-      {super.key,
-      required this.label,
-      required this.controller,
-      required this.formatter});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: label,
-        border: const OutlineInputBorder(),
-      ),
-      inputFormatters: [
-        FilteringTextInputFormatter.digitsOnly,
-        formatter,
-      ],
-      keyboardType: const TextInputType.numberWithOptions(decimal: true),
     );
   }
 }
