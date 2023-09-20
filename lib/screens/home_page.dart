@@ -1,6 +1,7 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:calculo_imc/janela_de_ajuda.dart';
 import 'package:calculo_imc/widgets/entrada_formatada.dart';
+import 'package:calculo_imc/widgets/medidor_circular.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,8 +37,8 @@ class _HomePageState extends State<HomePage> {
     double peso = double.parse(_pesoController.text.replaceFirst(',', '.'));
 
     setState(() {
-      print('peso: $peso');
-      print('altura: $altura');
+      //print('peso: $peso');
+      //print('altura: $altura');
 
       if (peso != 0 && altura != 0) {
         imc = peso / ((altura) * (altura));
@@ -82,111 +83,114 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 200,
-                      height: 50,
-                      padding: const EdgeInsets.all(5),
-                      child: EntradaFormatada(
-                        label: 'Peso (Kg)',
-                        controller: _pesoController,
-                        formatter: PesoInputFormatter(),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 200,
-                      height: 50,
-                      padding: const EdgeInsets.all(5),
-                      child: EntradaFormatada(
-                        label: 'Altura (metros)',
-                        controller: _alturaController,
-                        formatter: AlturaInputFormatter(),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: 190,
-                  height: 40,
-                  padding: const EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(3.0),
-                    border: Border.all(
-                      width: 1,
-                      color: Colors.grey,
+        //resizeToAvoidBottomInset: true,
+        body: SingleChildScrollView(
+          padding: EdgeInsets.only(top: 30.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 200,
+                    height: 50,
+                    padding: const EdgeInsets.all(5),
+                    child: EntradaFormatada(
+                      label: 'Peso (Kg)',
+                      controller: _pesoController,
+                      formatter: PesoInputFormatter(),
                     ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'IMC: ',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Text(
-                        imc.toStringAsFixed(2),
-                        // ignore: prefer_const_constructors
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
+                  Container(
+                    width: 200,
+                    height: 50,
+                    padding: const EdgeInsets.all(5),
+                    child: EntradaFormatada(
+                      label: 'Altura (metros)',
+                      controller: _alturaController,
+                      formatter: AlturaInputFormatter(),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                width: 200,
+                height: 50,
+                padding: const EdgeInsets.all(5),
+                child: ElevatedButton(
+                  child: const Text('Calcular IMC'),
+                  onPressed: () {
+                    calcularIMC();
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                width: 400,
+                height: 400,
+                child: MedidorCircular(imc: imc),
+              ),
+              const SizedBox(
+                height: 0.1,
+              ),
+              Container(
+                width: 190,
+                height: 40,
+                padding: const EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3.0),
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.grey,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      textodiagnosticoIMC,
-                      style: const TextStyle(
-                        color: Colors.blueGrey,
-                        fontSize: 18.0,
+                    const Text(
+                      'IMC: ',
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        fontSize: 18.0,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Text(
+                      imc.toStringAsFixed(2),
+                      // ignore: prefer_const_constructors
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.0,
+                        color: Colors.grey,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: 200,
-                  height: 50,
-                  padding: const EdgeInsets.all(5),
-                  child: ElevatedButton(
-                    child: const Text('Calcular IMC'),
-                    onPressed: () {
-                      calcularIMC();
-                      FocusManager.instance.primaryFocus?.unfocus();
-                    },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    textodiagnosticoIMC,
+                    style: const TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

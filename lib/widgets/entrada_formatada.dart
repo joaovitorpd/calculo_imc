@@ -14,7 +14,7 @@ class EntradaFormatada extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
@@ -24,7 +24,8 @@ class EntradaFormatada extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
         formatter,
       ],
-      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+      keyboardType: TextInputType.number,
+      textInputAction: TextInputAction.done,
     );
   }
 }
