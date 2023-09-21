@@ -184,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                     textodiagnosticoIMC,
                     style: const TextStyle(
                       color: Colors.blueGrey,
-                      fontSize: 18.0,
+                      fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
