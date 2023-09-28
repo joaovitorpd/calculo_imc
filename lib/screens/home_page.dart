@@ -1,5 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:calculo_imc/janela_de_ajuda.dart';
+import 'package:calculo_imc/widgets/janela_de_ajuda.dart';
 import 'package:calculo_imc/widgets/entrada_formatada.dart';
 import 'package:calculo_imc/widgets/medidor_circular.dart';
 import 'package:flutter/material.dart';
@@ -132,13 +132,17 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 30,
               ),
-              SizedBox(
-                width: 400,
-                height: 400,
+              Container(
+                margin: const EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(200, 255, 255, 255),
+                  boxShadow: kElevationToShadow[4],
+                  shape: BoxShape.circle,
+                ),
                 child: MedidorCircular(imc: imc),
               ),
               const SizedBox(
-                height: 0.1,
+                height: 30.0,
               ),
               Container(
                 width: 190,
