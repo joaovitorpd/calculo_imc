@@ -85,32 +85,22 @@ class _HomePageState extends State<HomePage> {
         ),
         //resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
-          padding: EdgeInsets.only(top: 30.0),
+          padding: const EdgeInsets.only(top: 30.0, right: 5.0, left: 5.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 200,
-                    height: 50,
-                    padding: const EdgeInsets.all(5),
-                    child: EntradaFormatada(
-                      label: 'Peso (Kg)',
-                      controller: _pesoController,
-                      formatter: PesoInputFormatter(),
-                    ),
+                  EntradaFormatada(
+                    label: 'Peso (Kg)',
+                    controller: _pesoController,
+                    formatter: PesoInputFormatter(),
                   ),
-                  Container(
-                    width: 200,
-                    height: 50,
-                    padding: const EdgeInsets.all(5),
-                    child: EntradaFormatada(
-                      label: 'Altura (metros)',
-                      controller: _alturaController,
-                      formatter: AlturaInputFormatter(),
-                    ),
+                  EntradaFormatada(
+                    label: 'Altura (metros)',
+                    controller: _alturaController,
+                    formatter: AlturaInputFormatter(),
                   ),
                 ],
               ),

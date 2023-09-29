@@ -14,18 +14,22 @@ class EntradaFormatada extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: label,
-        border: const OutlineInputBorder(),
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.4,
+      height: 50,
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+          border: const OutlineInputBorder(),
+        ),
+        inputFormatters: [
+          FilteringTextInputFormatter.digitsOnly,
+          formatter,
+        ],
+        keyboardType: TextInputType.number,
+        textInputAction: TextInputAction.done,
       ),
-      inputFormatters: [
-        FilteringTextInputFormatter.digitsOnly,
-        formatter,
-      ],
-      keyboardType: TextInputType.number,
-      textInputAction: TextInputAction.done,
     );
   }
 }
