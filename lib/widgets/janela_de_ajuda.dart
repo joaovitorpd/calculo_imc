@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Future<void> JanelaDeAjuda(BuildContext context) {
+Future<void> janelaDeAjuda(BuildContext context) {
   return showDialog<void>(
     context: context,
     builder: (BuildContext context) {

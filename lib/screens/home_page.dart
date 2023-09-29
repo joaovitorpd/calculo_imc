@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 size: 30,
               ),
               onPressed: () {
-                JanelaDeAjuda(context);
+                janelaDeAjuda(context);
               },
             ),
           ],
