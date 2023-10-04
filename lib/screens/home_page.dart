@@ -1,4 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:calculo_imc/widgets/botao_padrao_acao.dart';
 import 'package:calculo_imc/widgets/janela_de_ajuda.dart';
 import 'package:calculo_imc/widgets/entrada_formatada.dart';
 import 'package:calculo_imc/widgets/medidor_circular.dart';
@@ -107,18 +108,8 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 30,
               ),
-              Container(
-                width: 200,
-                height: 50,
-                padding: const EdgeInsets.all(5),
-                child: ElevatedButton(
-                  child: const Text('Calcular IMC'),
-                  onPressed: () {
-                    calcularIMC();
-                    FocusManager.instance.primaryFocus?.unfocus();
-                  },
-                ),
-              ),
+              BotaoPadraoAcao(
+                  textoDoBotao: "Calcular IMC", funcaoDoBotao: calcularIMC),
               const SizedBox(
                 height: 30,
               ),
