@@ -1,6 +1,7 @@
+import 'package:calculo_imc/cards/diagnostico_card.dart';
 import 'package:calculo_imc/cards/entrada_cartao.dart';
 import 'package:calculo_imc/widgets/janela_de_ajuda.dart';
-import 'package:calculo_imc/widgets/medidor_circular.dart';
+import 'package:calculo_imc/cards/medidor_circular.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -93,59 +94,8 @@ class _HomePageState extends State<HomePage> {
                   pesoController: _pesoController,
                   calcularIMC: calcularIMC),
               MedidorCircular(imc: imc),
-              const SizedBox(
-                height: 30.0,
-              ),
-              Container(
-                width: 190,
-                height: 40,
-                padding: const EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3.0),
-                  border: Border.all(
-                    width: 1,
-                    color: Colors.grey,
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'IMC: ',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    Text(
-                      imc.toStringAsFixed(2),
-                      // ignore: prefer_const_constructors
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    textodiagnosticoIMC,
-                    style: const TextStyle(
-                      color: Colors.blueGrey,
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+              DiagnosticoCard(
+                  textodiagnosticoIMC: textodiagnosticoIMC, imc: imc),
             ],
           ),
         ),
