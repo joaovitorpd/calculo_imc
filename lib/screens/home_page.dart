@@ -1,7 +1,5 @@
-import 'package:brasil_fields/brasil_fields.dart';
-import 'package:calculo_imc/widgets/botao_padrao_acao.dart';
+import 'package:calculo_imc/cards/entrada_cartao.dart';
 import 'package:calculo_imc/widgets/janela_de_ajuda.dart';
-import 'package:calculo_imc/widgets/entrada_formatada.dart';
 import 'package:calculo_imc/widgets/medidor_circular.dart';
 import 'package:flutter/material.dart';
 
@@ -90,29 +88,10 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  EntradaFormatada(
-                    label: 'Peso (Kg)',
-                    controller: _pesoController,
-                    formatter: PesoInputFormatter(),
-                  ),
-                  EntradaFormatada(
-                    label: 'Altura (metros)',
-                    controller: _alturaController,
-                    formatter: AlturaInputFormatter(),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              BotaoPadraoAcao(
-                  textoDoBotao: "Calcular IMC", funcaoDoBotao: calcularIMC),
-              const SizedBox(
-                height: 30,
-              ),
+              EntradaCartao(
+                  alturaController: _alturaController,
+                  pesoController: _pesoController,
+                  calcularIMC: calcularIMC),
               Container(
                 margin: const EdgeInsets.all(5.0),
                 decoration: BoxDecoration(
