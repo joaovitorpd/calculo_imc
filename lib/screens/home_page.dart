@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
         ),
         //resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
-          padding: const EdgeInsets.only(top: 30.0, right: 5.0, left: 5.0),
+          padding: const EdgeInsets.only(top: 5.0, right: 5.0, left: 5.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -92,15 +92,7 @@ class _HomePageState extends State<HomePage> {
                   alturaController: _alturaController,
                   pesoController: _pesoController,
                   calcularIMC: calcularIMC),
-              Container(
-                margin: const EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(200, 255, 255, 255),
-                  boxShadow: kElevationToShadow[4],
-                  shape: BoxShape.circle,
-                ),
-                child: MedidorCircular(imc: imc),
-              ),
+              MedidorCircular(imc: imc),
               const SizedBox(
                 height: 30.0,
               ),
