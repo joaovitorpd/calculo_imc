@@ -15,7 +15,7 @@ Future<void> janelaDeAjuda(BuildContext context) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Expanded(
                   child: Text(
