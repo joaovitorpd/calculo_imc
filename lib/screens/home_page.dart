@@ -80,6 +80,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 janelaDeAjuda(context);
               },
+              iconSize: 40,
             ),
           ],
         ),
