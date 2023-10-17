@@ -1,3 +1,4 @@
+import 'package:calculo_imc/cards/cartao_padrao.dart';
 import 'package:flutter/material.dart';
 
 class DiagnosticoCard extends StatelessWidget {
@@ -10,63 +11,60 @@ class DiagnosticoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Container(
-              width: 190,
-              height: 40,
-              padding: const EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3.0),
-                border: Border.all(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'IMC: ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  Text(
-                    imc.toStringAsFixed(2),
-                    // ignore: prefer_const_constructors
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
+    return CartaoPadrao(
+      child: Column(
+        children: [
+          Container(
+            width: 190,
+            height: 40,
+            padding: const EdgeInsets.all(5.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3.0),
+              border: Border.all(
+                width: 1,
+                color: Colors.grey,
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  textodiagnosticoIMC,
-                  style: const TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 30.0,
+                const Text(
+                  'IMC: ',
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                    color: Colors.grey,
+                  ),
+                ),
+                Text(
+                  imc.toStringAsFixed(2),
+                  // ignore: prefer_const_constructors
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                    color: Colors.grey,
                   ),
                 ),
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                textodiagnosticoIMC,
+                style: const TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
