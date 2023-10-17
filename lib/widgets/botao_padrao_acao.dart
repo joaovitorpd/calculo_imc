@@ -13,12 +13,14 @@ class BotaoPadraoAcao extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 200,
-      height: 50,
-      padding: const EdgeInsets.all(5),
+    return SizedBox(
+      //width: 200,
+      //height: 50,
       child: ElevatedButton(
-        child: const Text('Calcular IMC'),
+        child: const Text(
+          'Calcular IMC',
+          textAlign: TextAlign.center,
+        ),
         onPressed: () {
           funcaoDoBotao();
           FocusManager.instance.primaryFocus?.unfocus();
