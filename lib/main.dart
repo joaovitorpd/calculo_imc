@@ -17,10 +17,9 @@ class AppCalculoIMC extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       locale: const Locale('pt', 'BR'),
       theme: ThemeData(
-        primarySwatch: Palette.modoEscuro,
-        //cardColor: const Color.fromRGBO(255, 255, 255, 1),
-        //scaffoldBackgroundColor: const Color.fromARGB(255, 193, 196, 202)
-      ),
+          primarySwatch: Palette.modoEscuro,
+          //cardColor: const Color.fromRGBO(255, 255, 255, 1),
+          scaffoldBackgroundColor: const Color(0xff72871b)),
       home: const HomePage(title: 'Calcule seu IMC'),
     );
   }
