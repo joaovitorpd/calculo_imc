@@ -20,7 +20,7 @@ class _MedidorCircularState extends State<MedidorCircular> {
       child: Container(
         margin: const EdgeInsets.all(18.0),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(200, 255, 255, 255),
+          color: Colors.white,
           boxShadow: kElevationToShadow[4],
           shape: BoxShape.circle,
         ),
