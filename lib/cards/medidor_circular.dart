@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
 
+import 'package:calculo_imc/cards/cartao_padrao.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
@@ -15,7 +16,7 @@ class MedidorCircular extends StatefulWidget {
 class _MedidorCircularState extends State<MedidorCircular> {
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return CartaoPadrao(
       child: Container(
         margin: const EdgeInsets.all(18.0),
         decoration: BoxDecoration(
