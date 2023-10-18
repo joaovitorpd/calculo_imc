@@ -16,13 +16,15 @@ class EntradaFormatada extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.4,
-      height: 50,
-      child: TextFormField(
+      child: TextField(
+        textAlign: TextAlign.start,
         controller: controller,
         decoration: InputDecoration(
-          labelText: label,
-          border: const OutlineInputBorder(),
-        ),
+            labelText: label,
+            labelStyle: Theme.of(context).textTheme.labelMedium,
+            isDense: true,
+            border: const OutlineInputBorder(),
+            contentPadding: const EdgeInsets.all(16)),
         inputFormatters: [
           FilteringTextInputFormatter.digitsOnly,
           formatter,

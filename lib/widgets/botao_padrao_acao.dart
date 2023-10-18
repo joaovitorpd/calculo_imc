@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class BotaoPadraoAcao extends StatelessWidget {
@@ -14,12 +16,14 @@ class BotaoPadraoAcao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      //width: 200,
-      //height: 50,
       child: ElevatedButton(
+        //style: ButtonStyle(padding: ),
+        style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.only(top: 16, right: 24, bottom: 16, left: 24)),
         child: const Text(
           'Calcular IMC',
           textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 15),
         ),
         onPressed: () {
           funcaoDoBotao();
