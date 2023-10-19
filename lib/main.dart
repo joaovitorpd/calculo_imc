@@ -1,5 +1,4 @@
 import 'package:calculo_imc/config/color_schemes.g.dart';
-import 'package:calculo_imc/config/palette.dart';
 import 'package:calculo_imc/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
