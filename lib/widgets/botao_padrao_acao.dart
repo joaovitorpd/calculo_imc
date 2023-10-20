@@ -20,10 +20,10 @@ class BotaoPadraoAcao extends StatelessWidget {
         //style: ButtonStyle(padding: ),
         style: ElevatedButton.styleFrom(
             padding: EdgeInsets.only(top: 16, right: 24, bottom: 16, left: 24)),
-        child: const Text(
+        child: Text(
           'Calcular IMC',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
+          style: Theme.of(context).textTheme.labelMedium,
         ),
         onPressed: () {
           funcaoDoBotao();
