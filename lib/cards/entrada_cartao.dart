@@ -30,7 +30,7 @@ class EntradaCartao extends StatelessWidget {
                 formatter: PesoInputFormatter(),
               ),
               EntradaFormatada(
-                label: 'Altura (metros)',
+                label: 'Altura (m)',
                 controller: alturaController,
                 formatter: AlturaInputFormatter(),
               ),

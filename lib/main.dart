@@ -1,4 +1,5 @@
 import 'package:calculo_imc/config/color_schemes.g.dart';
+import 'package:calculo_imc/config/text_schemes.dart';
 import 'package:calculo_imc/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +17,14 @@ class AppCalculoIMC extends StatelessWidget {
       title: 'Calculadora de IMC',
       debugShowCheckedModeBanner: false,
       locale: const Locale('pt', 'BR'),
-      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: lightColorScheme,
+          textTheme: lightTextSchemes),
+      darkTheme: ThemeData(
+          useMaterial3: true,
+          colorScheme: darkColorScheme,
+          textTheme: darkTextSchemes),
       home: const HomePage(title: 'Calcule seu IMC'),
     );
   }

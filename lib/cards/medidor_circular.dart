@@ -22,9 +22,8 @@ class _MedidorCircularState extends State<MedidorCircular> {
         height: MediaQuery.of(context).size.height * 0.4,
         child: Container(
           margin: const EdgeInsets.all(5.0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: kElevationToShadow[4],
+          decoration: const BoxDecoration(
+            color: Colors.transparent,
             shape: BoxShape.circle,
           ),
           child: Center(
@@ -37,13 +36,41 @@ class _MedidorCircularState extends State<MedidorCircular> {
                       true, // Defina o máximo de IMC de acordo com sua necessidade
                   ranges: <GaugeRange>[
                     GaugeRange(
-                        startValue: 0, endValue: 18.5, color: Colors.yellow),
+                      startValue: 0,
+                      endValue: 18.5,
+                      color: Colors.yellow,
+                      labelStyle: GaugeTextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer),
+                    ),
                     GaugeRange(
-                        startValue: 18.5, endValue: 24.9, color: Colors.green),
+                      startValue: 18.5,
+                      endValue: 24.9,
+                      color: Colors.green,
+                      labelStyle: GaugeTextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer),
+                    ),
                     GaugeRange(
-                        startValue: 25.0, endValue: 29.9, color: Colors.orange),
+                      startValue: 25.0,
+                      endValue: 29.9,
+                      color: Colors.orange,
+                      labelStyle: GaugeTextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer),
+                    ),
                     GaugeRange(
-                        startValue: 30.0, endValue: 60.0, color: Colors.red)
+                      startValue: 30.0,
+                      endValue: 60.0,
+                      color: Colors.red,
+                      labelStyle: GaugeTextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer),
+                    )
                   ],
                   pointers: <GaugePointer>[
                     NeedlePointer(

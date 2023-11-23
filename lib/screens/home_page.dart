@@ -70,12 +70,14 @@ class _HomePageState extends State<HomePage> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.primary,
           title: Text(
             widget.title,
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           actions: [
             IconButton(
+              color: Theme.of(context).colorScheme.onPrimary,
               icon: const Icon(
                 Icons.help_outline_outlined,
                 size: 30,

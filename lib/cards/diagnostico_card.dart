@@ -19,10 +19,10 @@ class DiagnosticoCard extends StatelessWidget {
             //height: 40,
             padding: const EdgeInsets.all(5.0),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3.0),
+              borderRadius: BorderRadius.circular(30.0),
               border: Border.all(
-                width: 1,
-                color: Colors.grey,
+                width: 3,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
             child: Row(
@@ -31,10 +31,10 @@ class DiagnosticoCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     "IMC: ${imc.toStringAsFixed(2)}",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18.0,
-                      color: Colors.grey,
+                      color: Theme.of(context).colorScheme.onSecondaryContainer,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -51,8 +51,8 @@ class DiagnosticoCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   textodiagnosticoIMC,
-                  style: const TextStyle(
-                    color: Colors.blueGrey,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),

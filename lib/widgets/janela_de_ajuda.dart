@@ -11,7 +11,7 @@ Future<void> janelaDeAjuda(BuildContext context) {
         title: Text(
           "Ajuda",
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         content: SingleChildScrollView(
           padding: const EdgeInsets.all(1.0),
