@@ -1,6 +1,6 @@
 import 'package:calculo_imc/cards/diagnostico_card.dart';
 import 'package:calculo_imc/cards/entrada_cartao.dart';
-import 'package:calculo_imc/models/imc.dart';
+import 'package:calculo_imc/models/imc_controller.dart';
 import 'package:calculo_imc/widgets/janela_de_ajuda.dart';
 import 'package:calculo_imc/cards/medidor_circular.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   final _pesoController = TextEditingController();
   late String diagnosticoDoIMC;
   final _formKey = GlobalKey<FormState>();
+  double imc = 0;
 
   @override
   void initState() {
@@ -41,8 +42,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         final altura = _trocarVirgulaPorPonto(controller: alturaController);
         final peso = _trocarVirgulaPorPonto(controller: pesoController);
-        widget.imcController.imc =
-            widget.imcController.calcularIMC(altura, peso);
+        imc = widget.imcController.calcularIMC(altura, peso);
         FocusScope.of(context).unfocus();
       });
     }
@@ -57,7 +57,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var imc = widget.imcController.imc;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(

@@ -1,9 +1,8 @@
 class ImcController {
-  double imc = 0;
-
   double calcularIMC(double altura, double peso) {
     if (peso == 0 || altura == 0) return 0;
-    return peso / (altura * altura);
+    var imc = peso / (altura * altura);
+    return double.parse(imc.toStringAsFixed(2));
   }
 
   String diagnosticar(double imc) {

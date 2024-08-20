@@ -1,6 +1,6 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:calculo_imc/cards/cartao_padrao.dart';
-import 'package:calculo_imc/models/imc.dart';
+import 'package:calculo_imc/models/imc_controller.dart';
 import 'package:calculo_imc/widgets/botao_padrao_acao.dart';
 import 'package:calculo_imc/widgets/entrada_formatada.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +46,7 @@ class EntradaCartao extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 EntradaFormatada(
+                  key: const ValueKey('peso'),
                   label: 'Peso (Kg)',
                   controller: pesoController,
                   formatter: PesoInputFormatter(),
@@ -53,6 +54,7 @@ class EntradaCartao extends StatelessWidget {
                   validarCampo: _validarPeso,
                 ),
                 EntradaFormatada(
+                  key: const ValueKey('altura'),
                   label: 'Altura (m)',
                   controller: alturaController,
                   formatter: AlturaInputFormatter(),

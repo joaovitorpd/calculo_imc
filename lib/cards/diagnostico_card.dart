@@ -30,6 +30,7 @@ class DiagnosticoCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
+                    key: const ValueKey('resultadoIMC'),
                     "IMC: ${imc.toStringAsFixed(2)}",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -50,6 +51,7 @@ class DiagnosticoCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
+                  key: const ValueKey('diagnosticoIMC'),
                   textodiagnosticoIMC,
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onSecondaryContainer,

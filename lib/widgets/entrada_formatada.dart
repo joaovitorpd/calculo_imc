@@ -22,6 +22,7 @@ class EntradaFormatada extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.4,
       child: TextFormField(
+        key: key,
         textAlign: TextAlign.start,
         controller: controller,
         validator: validarCampo,
