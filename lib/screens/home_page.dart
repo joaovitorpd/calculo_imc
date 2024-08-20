@@ -1,23 +1,25 @@
 import 'package:calculo_imc/cards/diagnostico_card.dart';
 import 'package:calculo_imc/cards/entrada_cartao.dart';
+import 'package:calculo_imc/models/imc.dart';
 import 'package:calculo_imc/widgets/janela_de_ajuda.dart';
 import 'package:calculo_imc/cards/medidor_circular.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+  const HomePage({super.key, required this.title, required this.imcController});
 
   final String title;
+  final ImcController imcController;
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  double imc = 0;
   final _alturaController = TextEditingController();
   final _pesoController = TextEditingController();
-  String textodiagnosticoIMC = 'Sem diagnostico';
+  late String diagnosticoDoIMC;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -31,41 +33,31 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  void calcularIMC() {
-    double altura =
-        double.parse(_alturaController.text.replaceFirst(r',', '.'));
-    double peso = double.parse(_pesoController.text.replaceFirst(',', '.'));
-
-    setState(() {
-      //print('peso: $peso');
-      //print('altura: $altura');
-
-      if (peso != 0 && altura != 0) {
-        imc = peso / ((altura) * (altura));
-      } else {
-        imc = 0;
-      }
-
-      diagnosticoIMC();
-    });
-  }
-
-  void diagnosticoIMC() {
-    if (imc < 18.5) {
-      textodiagnosticoIMC = 'Magreza';
-    } else if (imc >= 18.5 && imc <= 24.9) {
-      textodiagnosticoIMC = 'Normal';
-    } else if (imc >= 25.0 && imc <= 29.9) {
-      textodiagnosticoIMC = 'Sobrepeso';
-    } else if (imc >= 30 && imc <= 39.9) {
-      textodiagnosticoIMC = 'Obesidade';
-    } else if (imc >= 40) {
-      textodiagnosticoIMC = 'Obesidade Grave';
+  void _executarCalculoIMC(
+      GlobalKey<FormState> chave,
+      TextEditingController alturaController,
+      TextEditingController pesoController) {
+    if (chave.currentState!.validate()) {
+      setState(() {
+        final altura = _trocarVirgulaPorPonto(controller: alturaController);
+        final peso = _trocarVirgulaPorPonto(controller: pesoController);
+        widget.imcController.imc =
+            widget.imcController.calcularIMC(altura, peso);
+        FocusScope.of(context).unfocus();
+      });
     }
   }
 
+  //The method trocarVirgulaPorPonto is needed because the package Brasil Fields
+  //puts a "," (comma) instead of a "." (period) in the value of the controller.
+  double _trocarVirgulaPorPonto({required TextEditingController controller}) =>
+      controller.text.isNotEmpty
+          ? double.parse(controller.text.replaceFirst(r',', '.'))
+          : 0;
+
   @override
   Widget build(BuildContext context) {
+    var imc = widget.imcController.imc;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -96,12 +88,17 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               EntradaCartao(
-                  alturaController: _alturaController,
-                  pesoController: _pesoController,
-                  calcularIMC: calcularIMC),
+                alturaController: _alturaController,
+                pesoController: _pesoController,
+                funcaoDoBotao: () => _executarCalculoIMC(
+                    _formKey, _alturaController, _pesoController),
+                imcController: widget.imcController,
+                formKey: _formKey,
+              ),
               MedidorCircular(imc: imc),
               DiagnosticoCard(
-                  textodiagnosticoIMC: textodiagnosticoIMC, imc: imc),
+                  textodiagnosticoIMC: widget.imcController.diagnosticar(imc),
+                  imc: imc),
             ],
           ),
         ),

@@ -5,20 +5,26 @@ class EntradaFormatada extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final TextInputFormatter formatter;
+  final void Function()? okDoTeclado;
+  final String? Function(String?)? validarCampo;
 
-  const EntradaFormatada(
-      {super.key,
-      required this.label,
-      required this.controller,
-      required this.formatter});
+  const EntradaFormatada({
+    super.key,
+    required this.label,
+    required this.controller,
+    required this.formatter,
+    required this.okDoTeclado,
+    required this.validarCampo,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.4,
-      child: TextField(
+      child: TextFormField(
         textAlign: TextAlign.start,
         controller: controller,
+        validator: validarCampo,
         decoration: InputDecoration(
             labelText: label,
             labelStyle: Theme.of(context).textTheme.labelMedium,
@@ -30,6 +36,7 @@ class EntradaFormatada extends StatelessWidget {
           formatter,
         ],
         keyboardType: TextInputType.number,
+        onEditingComplete: okDoTeclado,
         textInputAction: TextInputAction.done,
       ),
     );

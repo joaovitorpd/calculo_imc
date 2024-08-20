@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class MedidorCircular extends StatefulWidget {
-  final double imc;
+  final double? imc;
 
-  MedidorCircular({super.key, required this.imc});
+  const MedidorCircular({super.key, required this.imc});
 
   @override
   State<MedidorCircular> createState() => _MedidorCircularState();
@@ -29,64 +29,7 @@ class _MedidorCircularState extends State<MedidorCircular> {
           child: Center(
             child: SfRadialGauge(
               axes: <RadialAxis>[
-                RadialAxis(
-                  minimum: 0.0,
-                  maximum: 60.0,
-                  showLastLabel:
-                      true, // Defina o máximo de IMC de acordo com sua necessidade
-                  ranges: <GaugeRange>[
-                    GaugeRange(
-                      startValue: 0,
-                      endValue: 18.5,
-                      color: Colors.yellow,
-                      labelStyle: GaugeTextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSecondaryContainer),
-                    ),
-                    GaugeRange(
-                      startValue: 18.5,
-                      endValue: 24.9,
-                      color: Colors.green,
-                      labelStyle: GaugeTextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSecondaryContainer),
-                    ),
-                    GaugeRange(
-                      startValue: 25.0,
-                      endValue: 29.9,
-                      color: Colors.orange,
-                      labelStyle: GaugeTextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSecondaryContainer),
-                    ),
-                    GaugeRange(
-                      startValue: 30.0,
-                      endValue: 60.0,
-                      color: Colors.red,
-                      labelStyle: GaugeTextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSecondaryContainer),
-                    )
-                  ],
-                  pointers: <GaugePointer>[
-                    NeedlePointer(
-                      value: widget.imc,
-                      needleColor: _getColorForIMC(widget.imc),
-                    )
-                  ],
-                  /* annotations: <GaugeAnnotation>[
-                    GaugeAnnotation(
-                        widget: Text(widget.imc.toStringAsFixed(2),
-                            style: const TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold)),
-                        angle: 90,
-                        positionFactor: 0.5),
-                  ] */
-                ),
+                _buildRadialAxis(),
               ],
             ),
           ),
@@ -95,15 +38,40 @@ class _MedidorCircularState extends State<MedidorCircular> {
     );
   }
 
+  RadialAxis _buildRadialAxis() {
+    return RadialAxis(
+      minimum: 0.0,
+      maximum: 60.0,
+      ranges: <GaugeRange>[
+        _buildGaugeRange(0, 18.5, Colors.yellow),
+        _buildGaugeRange(18.5, 24.9, Colors.green),
+        _buildGaugeRange(25.0, 29.9, Colors.orange),
+        _buildGaugeRange(30.0, 60.0, Colors.red),
+      ],
+      pointers: <GaugePointer>[
+        NeedlePointer(
+          value: widget.imc!,
+          needleColor: _getColorForIMC(widget.imc!),
+        ),
+      ],
+    );
+  }
+
+  GaugeRange _buildGaugeRange(double start, double end, Color color) {
+    return GaugeRange(
+      startValue: start,
+      endValue: end,
+      color: color,
+      labelStyle: GaugeTextStyle(
+        color: Theme.of(context).colorScheme.onSecondaryContainer,
+      ),
+    );
+  }
+
   Color _getColorForIMC(double imc) {
-    if (imc < 18.5) {
-      return Colors.yellow;
-    } else if (imc <= 24.9) {
-      return Colors.green;
-    } else if (imc <= 29.9) {
-      return Colors.orange;
-    } else {
-      return Colors.red;
-    }
+    if (imc < 18.5) return Colors.yellow;
+    if (imc <= 24.9) return Colors.green;
+    if (imc <= 29.9) return Colors.orange;
+    return Colors.red;
   }
 }
