@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CartaoPadrao extends StatelessWidget {
+class CardCustomizado extends StatelessWidget {
   final double elevation;
   final EdgeInsets padding;
   final Widget child;
 
-  const CartaoPadrao(
+  const CardCustomizado(
       {super.key,
       this.elevation = 5.0,
       this.padding = const EdgeInsets.all(10.0),

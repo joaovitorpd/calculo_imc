@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class EntradaFormatada extends StatelessWidget {
+class TextFormFieldCustomizado extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final TextInputFormatter formatter;
   final void Function()? okDoTeclado;
   final String? Function(String?)? validarCampo;
 
-  const EntradaFormatada({
+  const TextFormFieldCustomizado({
     super.key,
     required this.label,
     required this.controller,

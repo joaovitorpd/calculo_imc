@@ -1,22 +1,20 @@
-// ignore_for_file: prefer_const_constructors_in_immutables
-
-import 'package:calculo_imc/cards/cartao_padrao.dart';
+import 'package:calculo_imc/widgets/card_customizado.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-class MedidorCircular extends StatefulWidget {
+class MedidorImcCircularCard extends StatefulWidget {
   final double? imc;
 
-  const MedidorCircular({super.key, required this.imc});
+  const MedidorImcCircularCard({super.key, required this.imc});
 
   @override
-  State<MedidorCircular> createState() => _MedidorCircularState();
+  State<MedidorImcCircularCard> createState() => _MedidorImcCircularCardState();
 }
 
-class _MedidorCircularState extends State<MedidorCircular> {
+class _MedidorImcCircularCardState extends State<MedidorImcCircularCard> {
   @override
   Widget build(BuildContext context) {
-    return CartaoPadrao(
+    return CardCustomizado(
       child: SizedBox(
         width: double.infinity,
         height: MediaQuery.of(context).size.height * 0.4,
@@ -50,7 +48,7 @@ class _MedidorCircularState extends State<MedidorCircular> {
       ],
       pointers: <GaugePointer>[
         NeedlePointer(
-          value: widget.imc!,
+          value: widget.imc ?? 0.0,
           needleColor: _getColorForIMC(widget.imc!),
         ),
       ],

@@ -1,4 +1,4 @@
-class ImcController {
+class OperacoesImc {
   double calcularIMC(double altura, double peso) {
     if (peso == 0 || altura == 0) return 0;
     var imc = peso / (altura * altura);

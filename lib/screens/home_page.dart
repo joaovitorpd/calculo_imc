@@ -1,15 +1,15 @@
-import 'package:calculo_imc/cards/diagnostico_card.dart';
-import 'package:calculo_imc/cards/entrada_cartao.dart';
-import 'package:calculo_imc/models/imc_controller.dart';
+import 'package:calculo_imc/cards/resultado_diagnostico_card.dart';
+import 'package:calculo_imc/cards/peso_altura_card.dart';
+import 'package:calculo_imc/models/operacoes_imc.dart';
 import 'package:calculo_imc/widgets/janela_de_ajuda.dart';
-import 'package:calculo_imc/cards/medidor_circular.dart';
+import 'package:calculo_imc/cards/medidor_imc_circular_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title, required this.imcController});
+  const HomePage({super.key, required this.title, required this.operacoesImc});
 
   final String title;
-  final ImcController imcController;
+  final OperacoesImc operacoesImc;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -18,8 +18,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _alturaController = TextEditingController();
   final _pesoController = TextEditingController();
-  late String diagnosticoDoIMC;
   final _formKey = GlobalKey<FormState>();
+  late String diagnosticoDoIMC;
   double imc = 0;
 
   @override
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         final altura = _trocarVirgulaPorPonto(controller: alturaController);
         final peso = _trocarVirgulaPorPonto(controller: pesoController);
-        imc = widget.imcController.calcularIMC(altura, peso);
+        imc = widget.operacoesImc.calcularIMC(altura, peso);
         FocusScope.of(context).unfocus();
       });
     }
@@ -86,17 +86,17 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              EntradaCartao(
+              PesoAlturaCard(
                 alturaController: _alturaController,
                 pesoController: _pesoController,
                 funcaoDoBotao: () => _executarCalculoIMC(
                     _formKey, _alturaController, _pesoController),
-                imcController: widget.imcController,
+                imcController: widget.operacoesImc,
                 formKey: _formKey,
               ),
-              MedidorCircular(imc: imc),
-              DiagnosticoCard(
-                  textodiagnosticoIMC: widget.imcController.diagnosticar(imc),
+              MedidorImcCircularCard(imc: imc),
+              ResultadoDiagnosticoCard(
+                  textodiagnosticoIMC: widget.operacoesImc.diagnosticar(imc),
                   imc: imc),
             ],
           ),

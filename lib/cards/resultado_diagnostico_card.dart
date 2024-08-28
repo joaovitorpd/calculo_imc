@@ -1,8 +1,8 @@
-import 'package:calculo_imc/cards/cartao_padrao.dart';
+import 'package:calculo_imc/widgets/card_customizado.dart';
 import 'package:flutter/material.dart';
 
-class DiagnosticoCard extends StatelessWidget {
-  const DiagnosticoCard(
+class ResultadoDiagnosticoCard extends StatelessWidget {
+  const ResultadoDiagnosticoCard(
       {super.key, required this.textodiagnosticoIMC, required this.imc});
 
   final String textodiagnosticoIMC;
@@ -11,7 +11,7 @@ class DiagnosticoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CartaoPadrao(
+    return CardCustomizado(
       child: Column(
         children: [
           Container(

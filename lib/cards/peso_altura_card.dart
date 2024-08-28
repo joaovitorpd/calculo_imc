@@ -1,12 +1,12 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:calculo_imc/cards/cartao_padrao.dart';
-import 'package:calculo_imc/models/imc_controller.dart';
-import 'package:calculo_imc/widgets/botao_padrao_acao.dart';
-import 'package:calculo_imc/widgets/entrada_formatada.dart';
+import 'package:calculo_imc/widgets/card_customizado.dart';
+import 'package:calculo_imc/models/operacoes_imc.dart';
+import 'package:calculo_imc/widgets/botao_customizado.dart';
+import 'package:calculo_imc/widgets/text_form_field_customizado.dart';
 import 'package:flutter/material.dart';
 
-class EntradaCartao extends StatelessWidget {
-  const EntradaCartao(
+class PesoAlturaCard extends StatelessWidget {
+  const PesoAlturaCard(
       {super.key,
       required this.alturaController,
       required this.pesoController,
@@ -17,7 +17,7 @@ class EntradaCartao extends StatelessWidget {
   final TextEditingController alturaController;
   final TextEditingController pesoController;
   final Key formKey;
-  final ImcController imcController;
+  final OperacoesImc imcController;
 
   final void Function()? funcaoDoBotao;
 
@@ -37,7 +37,7 @@ class EntradaCartao extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CartaoPadrao(
+    return CardCustomizado(
       child: Column(
         children: [
           Form(
@@ -45,7 +45,7 @@ class EntradaCartao extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                EntradaFormatada(
+                TextFormFieldCustomizado(
                   key: const ValueKey('peso'),
                   label: 'Peso (Kg)',
                   controller: pesoController,
@@ -53,7 +53,7 @@ class EntradaCartao extends StatelessWidget {
                   okDoTeclado: funcaoDoBotao,
                   validarCampo: _validarPeso,
                 ),
-                EntradaFormatada(
+                TextFormFieldCustomizado(
                   key: const ValueKey('altura'),
                   label: 'Altura (m)',
                   controller: alturaController,
@@ -67,8 +67,11 @@ class EntradaCartao extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          BotaoPadraoAcao(
-              textoDoBotao: "Calcular IMC", funcaoDoBotao: funcaoDoBotao),
+          BotaoCustomizado(
+            textoDoBotao: "Calcular IMC",
+            funcaoDoBotao: funcaoDoBotao,
+            key: const ValueKey('botao_calcular'),
+          ),
         ],
       ),
     );

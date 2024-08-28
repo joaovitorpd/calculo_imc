@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BotaoPadraoAcao extends StatelessWidget {
-  const BotaoPadraoAcao({
+class BotaoCustomizado extends StatelessWidget {
+  const BotaoCustomizado({
     super.key,
     required this.textoDoBotao,
     required this.funcaoDoBotao,
@@ -15,7 +15,7 @@ class BotaoPadraoAcao extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: ElevatedButton(
-        //style: ButtonStyle(padding: ),
+        key: key,
         style: ElevatedButton.styleFrom(
             backgroundColor: Theme.of(context).colorScheme.primary,
             foregroundColor: Theme.of(context).colorScheme.primaryContainer,
